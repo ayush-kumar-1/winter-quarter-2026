@@ -104,7 +104,7 @@ def solve_shooting(k0, G_series, p, target_k_ss):
             objective, bracket=[0.01, bracket_max], method="brentq", xtol=1e-5
         )
         c0_opt = res.root
-    except:
+    except Exception:
         c0_opt = get_steady_state(G_series[0], p)[1]
 
     k_path, c_path = simulate_trajectory(k0, c0_opt, G_series, p)
